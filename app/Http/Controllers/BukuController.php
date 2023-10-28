@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\DB;
 use App\Http\Requests\StorebukuRequest;
 use App\Http\Requests\UpdatebukuRequest;
-use App\Models\buku;
+use App\Models\Buku;
 
 class BukuController extends Controller
 {
@@ -13,8 +13,14 @@ class BukuController extends Controller
      */
     public function index()
     {
-        //
+        // mengambil data dari table buku
+        $buku = Buku::all(); // Use the Buku model to fetch data.
+    
+        // mengirim data buku ke view index
+        return view('home', ['buku' => $buku]); // Pass the $buku variable to the view 'home'.
     }
+    
+
 
     /**
      * Show the form for creating a new resource.
